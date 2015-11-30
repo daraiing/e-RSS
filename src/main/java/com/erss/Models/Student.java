@@ -23,6 +23,8 @@ public class Student {
 	private int  year;
 	private String tid;
 	private String fcId;
+	private String password;
+	
 	public String getId() {
 		return id;
 	}
@@ -76,6 +78,12 @@ public class Student {
 	}
 	public void setFcId(String fcId) {
 		this.fcId = fcId;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 
