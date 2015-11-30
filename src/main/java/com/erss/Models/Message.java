@@ -3,6 +3,7 @@ package com.erss.Models;
 public class Message {
 	private String msg_type;
 	private Object msg_content;
+	private String x;
 	public String getMsg_type() {
 		return msg_type;
 	}
