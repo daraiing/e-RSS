@@ -2,9 +2,17 @@ package com.erss.Repositories;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.MongoTemplate;
+
 import com.erss.Models.Teacher;
 
 public class TeacherRepositoryImpl implements TeacherRepository {
+
+	MongoTemplate mongoTemplate;
+
+	public void setMongoTemplate(MongoTemplate mongoTemplate) {
+		this.mongoTemplate = mongoTemplate;
+	}
 
 	@Override
 	public Teacher fineOne(String tid) {

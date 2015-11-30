@@ -2,9 +2,18 @@ package com.erss.Repositories;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.MongoTemplate;
+
 import com.erss.Models.Faculty;
 
 public class FacultyRepositoryImpl implements FacultyRepository{
+
+	MongoTemplate mongoTemplate;
+	
+	
+	public void setMongoTemplate(MongoTemplate mongoTemplate) {
+		this.mongoTemplate = mongoTemplate;
+	}
 
 	@Override
 	public Faculty findOne(int fcId) {

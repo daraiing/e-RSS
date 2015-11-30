@@ -2,9 +2,18 @@ package com.erss.Repositories;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.MongoTemplate;
+
 import com.erss.Models.Student;
 
 public class StudentRepositoryImpl implements StudentRepository {
+
+	MongoTemplate mongoTemplate;
+	
+	
+	public void setMongoTemplate(MongoTemplate mongoTemplate) {
+		this.mongoTemplate = mongoTemplate;
+	}
 
 	@Override
 	public Student findOne(String sid) {
