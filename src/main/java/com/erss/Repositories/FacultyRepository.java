@@ -14,5 +14,6 @@ public interface FacultyRepository {
 	public Faculty findOne(int  fcId);
 	public List<Faculty>findAll();
 	public boolean insert(Faculty f);
-	public boolean delete(Faculty fcId);
+	public boolean delete(Faculty f);
+	public boolean update(Faculty f);
 }

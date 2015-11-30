@@ -15,6 +15,7 @@ public interface StudentRepository {
 	public List<Student> findAll();
 	public List<Student> findByAdvisor();
 	public boolean insert(Student st);
-	public boolean delete(String sid);
+	public boolean delete(Student st);
+	public boolean update(Student st);
 
 }

@@ -31,9 +31,14 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public boolean delete(Teacher t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	@Override
-	public boolean delete(String tid) {
+	public boolean update(Teacher t) {
 		// TODO Auto-generated method stub
 		return false;
 	}

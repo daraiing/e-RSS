@@ -14,5 +14,6 @@ public interface TeacherRepository {
 	public Teacher fineOne(String tid);
 	public List<Teacher> findAll();
 	public boolean insert(Teacher t);
-	public boolean delete(String tid);
+	public boolean delete(Teacher t);
+	public boolean update(Teacher t);
 }

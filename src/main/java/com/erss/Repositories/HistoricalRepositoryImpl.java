@@ -30,9 +30,14 @@ public class HistoricalRepositoryImpl implements HistoricalRepository {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public boolean delete(Historical h) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	@Override
-	public boolean delete(String sid, String cid) {
+	public boolean update(Historical h) {
 		// TODO Auto-generated method stub
 		return false;
 	}

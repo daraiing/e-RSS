@@ -34,7 +34,13 @@ public class FacultyRepositoryImpl implements FacultyRepository{
 	}
 
 	@Override
-	public boolean delete(Faculty fcId) {
+	public boolean delete(Faculty f) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(Faculty f) {
 		// TODO Auto-generated method stub
 		return false;
 	}

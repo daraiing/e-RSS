@@ -40,7 +40,13 @@ public class StudentRepositoryImpl implements StudentRepository {
 	}
 
 	@Override
-	public boolean delete(String sid) {
+	public boolean delete(Student st) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(Student st) {
 		// TODO Auto-generated method stub
 		return false;
 	}

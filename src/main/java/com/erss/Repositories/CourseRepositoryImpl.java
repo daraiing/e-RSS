@@ -33,7 +33,13 @@ public class CourseRepositoryImpl implements CourseRepository {
 	}
 
 	@Override
-	public boolean delete(Course cid) {
+	public boolean delete(Course c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(Course c) {
 		// TODO Auto-generated method stub
 		return false;
 	}
