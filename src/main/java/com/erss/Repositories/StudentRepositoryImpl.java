@@ -24,7 +24,16 @@ public class StudentRepositoryImpl implements StudentRepository {
 
 	@Override
 	public List<Student> find(Student st) {
-		return mongoTemplate.findAll(Student.class);
+		BasicQuery query = new BasicQuery("{ $or: [ { sid	:'"+ st.getSid()  	+"' },"
+												+ "{ fname	:'"+ st.getFname() 	+"' },"
+												+ " { lname :'"+ st.getLname()	+"' },"
+												+ " { year 	:'"+ st.getYear()	+"' },"
+												+ " { title :'"+ st.getTitle()	+"' },"
+												+ " { gender:'"+ st.getGender() +"' },"
+												+ " { tid	:'"+ st.getTid() 	+"' },"
+												+ " { fcid 	:'"+ st.getFcId() 	+"' }"
+												+ "]}");
+		return mongoTemplate.find(query,Student.class);
 	}
 
 	@Override
