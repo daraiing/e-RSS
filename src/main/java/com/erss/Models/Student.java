@@ -22,62 +22,63 @@ public class Student {
 	private String gender;
 	private int  year;
 	private String tid;
-	private String fid;
-	protected String getId() {
+	private String fcId;
+	public String getId() {
 		return id;
 	}
-	protected void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	protected String getSid() {
+	public String getSid() {
 		return sid;
 	}
-	protected void setSid(String sid) {
+	public void setSid(String sid) {
 		this.sid = sid;
 	}
-	protected String getTitle() {
+	public String getTitle() {
 		return title;
 	}
-	protected void setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
-	protected String getFname() {
+	public String getFname() {
 		return fname;
 	}
-	protected void setFname(String fname) {
+	public void setFname(String fname) {
 		this.fname = fname;
 	}
-	protected String getLname() {
+	public String getLname() {
 		return lname;
 	}
-	protected void setLname(String lname) {
+	public void setLname(String lname) {
 		this.lname = lname;
 	}
-	protected String getGender() {
+	public String getGender() {
 		return gender;
 	}
-	protected void setGender(String gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	protected int getYear() {
+	public int getYear() {
 		return year;
 	}
-	protected void setYear(int year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
-	protected String getTid() {
+	public String getTid() {
 		return tid;
 	}
-	protected void setTid(String tid) {
+	public void setTid(String tid) {
 		this.tid = tid;
 	}
-	protected String getFid() {
-		return fid;
+	public String getFcId() {
+		return fcId;
 	}
-	protected void setFid(String fid) {
-		this.fid = fid;
+	public void setFcId(String fcId) {
+		this.fcId = fcId;
 	}
-	
+
+
 	
 	
 

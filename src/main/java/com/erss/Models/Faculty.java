@@ -17,25 +17,26 @@ public class Faculty {
 	
 	private String fcId;
 	private String fcName;
-	protected String getId() {
+	public String getId() {
 		return id;
 	}
-	protected void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	protected String getFcId() {
+	public String getFcId() {
 		return fcId;
 	}
-	protected void setFcId(String fcId) {
+	public void setFcId(String fcId) {
 		this.fcId = fcId;
 	}
-	protected String getFcName() {
+	public String getFcName() {
 		return fcName;
 	}
-	protected void setFcName(String fcName) {
+	public void setFcName(String fcName) {
 		this.fcName = fcName;
 	}
-	
+
+
 	
 
 }

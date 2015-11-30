@@ -20,42 +20,44 @@ public class Course {
 	private int ccredit;
 	private String cdescription;
 	private String tid;
-	protected String getId() {
+	public String getId() {
 		return id;
 	}
-	protected void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	protected String getCid() {
+	public String getCid() {
 		return cid;
 	}
-	protected void setCid(String cid) {
+	public void setCid(String cid) {
 		this.cid = cid;
 	}
-	protected String getCname() {
+	public String getCname() {
 		return cname;
 	}
-	protected void setCname(String cname) {
+	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	protected int getCcredit() {
+	public int getCcredit() {
 		return ccredit;
 	}
-	protected void setCcredit(int ccredit) {
+	public void setCcredit(int ccredit) {
 		this.ccredit = ccredit;
 	}
-	protected String getCdescription() {
+	public String getCdescription() {
 		return cdescription;
 	}
-	protected void setCdescription(String cdescription) {
+	public void setCdescription(String cdescription) {
 		this.cdescription = cdescription;
 	}
-	protected String getTid() {
+	public String getTid() {
 		return tid;
 	}
-	protected void setTid(String tid) {
+	public void setTid(String tid) {
 		this.tid = tid;
 	}
+
+
 
 	
 }

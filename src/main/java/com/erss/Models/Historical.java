@@ -18,36 +18,37 @@ public class Historical {
 	private String cid;
 	private String semester;
 	private float grade;
-	protected String getId() {
+	public String getId() {
 		return id;
 	}
-	protected void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	protected String getSid() {
+	public String getSid() {
 		return sid;
 	}
-	protected void setSid(String sid) {
+	public void setSid(String sid) {
 		this.sid = sid;
 	}
-	protected String getCid() {
+	public String getCid() {
 		return cid;
 	}
-	protected void setCid(String cid) {
+	public void setCid(String cid) {
 		this.cid = cid;
 	}
-	protected String getSemester() {
+	public String getSemester() {
 		return semester;
 	}
-	protected void setSemester(String semester) {
+	public void setSemester(String semester) {
 		this.semester = semester;
 	}
-	protected float getGrade() {
+	public float getGrade() {
 		return grade;
 	}
-	protected void setGrade(float grade) {
+	public void setGrade(float grade) {
 		this.grade = grade;
 	}
+	
 	
 	
 
