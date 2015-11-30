@@ -9,26 +9,13 @@ import com.erss.Models.Student;
 public class StudentRepositoryImpl implements StudentRepository {
 
 	MongoTemplate mongoTemplate;
-	
-	
+
 	public void setMongoTemplate(MongoTemplate mongoTemplate) {
 		this.mongoTemplate = mongoTemplate;
 	}
 
 	@Override
 	public Student findOne(String sid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Student> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Student> findByAdvisor() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,6 +36,18 @@ public class StudentRepositoryImpl implements StudentRepository {
 	public boolean update(Student st) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Student> find(Student st) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Student> findByAdvisor(String tid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

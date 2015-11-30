@@ -12,7 +12,7 @@ import com.erss.Models.Faculty;
 public interface FacultyRepository {
 
 	public Faculty findOne(int  fcId);
-	public List<Faculty>findAll();
+	public List<Faculty> find(Faculty fc);
 	public boolean insert(Faculty f);
 	public boolean delete(Faculty f);
 	public boolean update(Faculty f);

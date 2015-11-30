@@ -12,7 +12,7 @@ import com.erss.Models.Teacher;
 public interface TeacherRepository {
 	
 	public Teacher fineOne(String tid);
-	public List<Teacher> findAll();
+	public List<Teacher> find(Teacher t);
 	public boolean insert(Teacher t);
 	public boolean delete(Teacher t);
 	public boolean update(Teacher t);

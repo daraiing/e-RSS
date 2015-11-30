@@ -21,12 +21,6 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	}
 
 	@Override
-	public List<Teacher> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean insert(Teacher t) {
 		// TODO Auto-generated method stub
 		return false;
@@ -41,6 +35,12 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	public boolean update(Teacher t) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Teacher> find(Teacher t) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

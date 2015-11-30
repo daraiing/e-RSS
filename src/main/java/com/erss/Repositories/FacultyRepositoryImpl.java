@@ -21,11 +21,6 @@ public class FacultyRepositoryImpl implements FacultyRepository{
 		return null;
 	}
 
-	@Override
-	public List<Faculty> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public boolean insert(Faculty f) {
@@ -43,6 +38,12 @@ public class FacultyRepositoryImpl implements FacultyRepository{
 	public boolean update(Faculty f) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Faculty> find(Faculty fc) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

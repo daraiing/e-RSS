@@ -12,7 +12,7 @@ import com.erss.Models.Course;
 public interface CourseRepository {
 	
 	public Course findOne(int cid);
-	public List<Course> findAll(); 
+	public List<Course> find(Course c); 
 	public boolean insert(Course c);
 	public boolean delete(Course c);
 	public boolean update(Course c);

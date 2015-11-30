@@ -1,5 +1,7 @@
 package com.erss.Repositories;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.erss.Models.Historical;
@@ -20,12 +22,6 @@ public class HistoricalRepositoryImpl implements HistoricalRepository {
 	}
 
 	@Override
-	public Historical findBySid(String sid, String condition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean insert(Historical h) {
 		// TODO Auto-generated method stub
 		return false;
@@ -40,6 +36,12 @@ public class HistoricalRepositoryImpl implements HistoricalRepository {
 	public boolean update(Historical h) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Historical> find(String condition) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
