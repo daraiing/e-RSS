@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Message insert(Student st) {
-		if (!studentRepository.findOne(st.getSid()).getSid().isEmpty()) {
+		if (studentRepository.findOne(st.getSid())!=null) {
 			Message msg = new Message(Message.MSG_ERROR);
 			msg.setMsgContent("This StudentId Already Exist in the Database");
 			return msg;

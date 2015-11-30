@@ -41,7 +41,7 @@ public class HomeController {
 //		msg.setMsg_content(Crypto.SHA1("Hello"));
 //		return msg;
 	Student st = new Student();
-	st.setSid("5488260");
+	st.setSid("5488262");
 	st.setTitle("Miss");
 	st.setFname("Daraiing");
 	st.setLname("Titithakul");
