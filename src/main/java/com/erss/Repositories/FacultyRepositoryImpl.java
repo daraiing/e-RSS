@@ -19,7 +19,6 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 
 	@Override
 	public boolean insert(Faculty f) {
-		// TODO Auto-generated method stub
 		try {
 			mongoTemplate.save(f);
 			return true;

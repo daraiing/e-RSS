@@ -25,14 +25,14 @@ public class StudentRepositoryImpl implements StudentRepository {
 	@Override
 	public List<Student> find(Student st) {
 		BasicQuery query = new BasicQuery("{ $or: [ { sid	:'"+ st.getSid()  	+"' },"
-												+ "{ fname	:'"+ st.getFname() 	+"' },"
-												+ " { lname :'"+ st.getLname()	+"' },"
-												+ " { year 	:'"+ st.getYear()	+"' },"
-												+ " { title :'"+ st.getTitle()	+"' },"
-												+ " { gender:'"+ st.getGender() +"' },"
-												+ " { tid	:'"+ st.getTid() 	+"' },"
-												+ " { fcid 	:'"+ st.getFcId() 	+"' }"
-												+ "]}");
+			+ "	{ fname	: '" + st.getFname() 	+ "' },"
+			+ " { lname : '" + st.getLname()	+ "' },"
+			+ " { year 	:  " + st.getYear()		+ "  },"
+			+ " { title : '" + st.getTitle()	+ "' },"
+			+ " { gender: '" + st.getGender()	+ "' },"
+			+ " { tid	: '" + st.getTid() 		+ "' },"
+			+ " { fcId 	: '" + st.getFcId() 	+ "' }"
+			+ "]}");
 		return mongoTemplate.find(query,Student.class);
 	}
 
@@ -56,7 +56,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 	@Override
 	public boolean delete(Student st) {
 		try {
-			BasicQuery query = new BasicQuery("{ sid:'" + st.getId() + "'}");
+			BasicQuery query = new BasicQuery("{ sid:'" + st.getSid() + "'}");
 			mongoTemplate.remove(query, Student.class);
 			return true;
 		} catch (Exception e) {
@@ -74,7 +74,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 			update.set("year",st.getYear());
 			update.set("password",st.getPassword());
 			update.set("tid", st.getTid());
-			update.set("fcid", st.getFcId());
+			update.set("fcId", st.getFcId());
 			mongoTemplate.updateFirst(query, update, Student.class);
 			return true;
 		} catch (Exception e) {
