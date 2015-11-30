@@ -42,6 +42,11 @@
 		class="com.erss.Repositories.HistoricalRepositoryImpl">
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
 	</beans:bean>
+	
+	<beans:bean id="studentService"
+		class="com.erss.Services.StudentServiceImpl">
+<!-- 		<beans:property name="studentRepository" ref="studentRepository" /> -->
+	</beans:bean>
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean

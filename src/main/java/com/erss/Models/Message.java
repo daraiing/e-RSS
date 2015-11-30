@@ -1,20 +1,28 @@
 package com.erss.Models;
 
 public class Message {
-	private String msg_type;
-	private Object msg_content;
-	public String getMsg_type() {
-		return msg_type;
+	private String msgType;
+	private Object msgContent;
+	public static final String MSG_SUCCESS = "success";
+	public static final String MSG_ERROR = "error";
+	
+	public Message(String msgType) {
+		super();
+		this.msgType = msgType;
 	}
-	public void setMsg_type(String msg_type) {
-		this.msg_type = msg_type;
+	public String getMsgType() {
+		return msgType;
 	}
-	public Object getMsg_content() {
-		return msg_content;
+	public void setMsgType(String msgType) {
+		this.msgType = msgType;
 	}
-	public void setMsg_content(Object msg_content) {
-		this.msg_content = msg_content;
+	public Object getMsgContent() {
+		return msgContent;
 	}
+	public void setMsgContent(Object msgContent) {
+		this.msgContent = msgContent;
+	}
+	
 	
 	
 }
