@@ -39,7 +39,7 @@
 		class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
 		<beans:constructor-arg name="mongo" ref="mongo" />
 		<beans:constructor-arg name="databaseName"
-			value="myDB" />
+			value="eRSS" />
 	</beans:bean>
 	<beans:bean id="mappingMongoConverter"
 		class="org.springframework.data.mongodb.core.convert.MappingMongoConverter">
