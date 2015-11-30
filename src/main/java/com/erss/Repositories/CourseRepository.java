@@ -11,7 +11,7 @@ import com.erss.Models.Course;
  */
 public interface CourseRepository {
 	
-	public Course findOne(int cid);
+	public Course findOne(String cid);
 	public List<Course> find(Course c); 
 	public boolean insert(Course c);
 	public boolean delete(Course c);

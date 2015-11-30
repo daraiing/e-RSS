@@ -15,12 +15,6 @@ public class CourseRepositoryImpl implements CourseRepository {
 	}
 
 	@Override
-	public Course findOne(int cid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean insert(Course c) {
 		// TODO Auto-generated method stub
 		return false;
@@ -40,6 +34,12 @@ public class CourseRepositoryImpl implements CourseRepository {
 
 	@Override
 	public List<Course> find(Course c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Course findOne(String cid) {
 		// TODO Auto-generated method stub
 		return null;
 	}

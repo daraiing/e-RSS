@@ -15,12 +15,6 @@ public class FacultyRepositoryImpl implements FacultyRepository{
 		this.mongoTemplate = mongoTemplate;
 	}
 
-	@Override
-	public Faculty findOne(int fcId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	public boolean insert(Faculty f) {
@@ -42,6 +36,12 @@ public class FacultyRepositoryImpl implements FacultyRepository{
 
 	@Override
 	public List<Faculty> find(Faculty fc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Faculty findOne(String fcId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

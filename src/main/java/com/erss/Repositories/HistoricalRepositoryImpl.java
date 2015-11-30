@@ -16,12 +16,6 @@ public class HistoricalRepositoryImpl implements HistoricalRepository {
 	}
 
 	@Override
-	public Historical findOne(int sid, int cid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean insert(Historical h) {
 		// TODO Auto-generated method stub
 		return false;
@@ -40,6 +34,12 @@ public class HistoricalRepositoryImpl implements HistoricalRepository {
 
 	@Override
 	public List<Historical> find(String condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Historical findOne(String sid, String cid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
