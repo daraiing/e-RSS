@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="")
-public class Hitorical {
+public class Historical {
 	
 	@Id
 	private String id;
