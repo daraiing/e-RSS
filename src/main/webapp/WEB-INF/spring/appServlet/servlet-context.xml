@@ -59,7 +59,7 @@
 	<!-- Factory bean that creates the Mongo instance -->
 	<beans:bean id="mongo"
 		class="org.springframework.data.mongodb.core.MongoFactoryBean">
-		<beans:property name="host" value="10.239.223.130" />
+		<beans:property name="host" value="10.239.223.97" />
 		<beans:property name="port" value="27017" />
 	</beans:bean>
 	<context:component-scan base-package="com.erss">
