@@ -43,6 +43,7 @@
 	<!-- List of Services use in the system -->
 
 	<beans:bean id="studentService" class="com.erss.Services.StudentServiceImpl" />
+	<beans:bean id="courseService" class="com.erss.Services.CourseServiceImpl" />
 	<beans:bean id="validationService" class="com.erss.Services.ValidationServiceImpl" />
 
 	<!-- <beans:property name="studentRepository" ref="studentRepository" /> -->
