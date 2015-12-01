@@ -66,4 +66,10 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 		return mongoTemplate.findOne(query, Faculty.class);
 	}
 
+	@Override
+	public List<Faculty> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

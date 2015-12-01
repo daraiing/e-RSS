@@ -72,4 +72,10 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 			return mongoTemplate.find(query,Teacher.class);
 	}
 
+	@Override
+	public List<Teacher> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

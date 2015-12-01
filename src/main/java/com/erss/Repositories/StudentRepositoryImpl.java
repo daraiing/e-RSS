@@ -82,4 +82,10 @@ public class StudentRepositoryImpl implements StudentRepository {
 		}
 	}
 
+	@Override
+	public List<Student> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

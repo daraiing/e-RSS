@@ -72,4 +72,10 @@ public class CourseRepositoryImpl implements CourseRepository {
 		return mongoTemplate.findOne(query, Course.class);
 	}
 
+	@Override
+	public List<Course> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

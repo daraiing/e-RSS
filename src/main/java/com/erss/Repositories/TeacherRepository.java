@@ -16,4 +16,5 @@ public interface TeacherRepository {
 	public boolean insert(Teacher t);
 	public boolean delete(Teacher t);
 	public boolean update(Teacher t);
+	public List<Teacher> findAll();
 }
