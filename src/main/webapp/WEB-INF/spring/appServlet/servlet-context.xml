@@ -41,7 +41,9 @@
 	</beans:bean>
 
 	<!-- List of Services use in the system -->
-
+	<beans:bean id="facultyService" class="com.erss.Services.FacultyServiceImpl" />
+	<beans:bean id="historicalService" class="com.erss.Services.HistoricalServiceImpl" />
+	<beans:bean id="teacherService" class="com.erss.Services.TeacherServiceImpl" />
 	<beans:bean id="studentService" class="com.erss.Services.StudentServiceImpl" />
 	<beans:bean id="courseService" class="com.erss.Services.CourseServiceImpl" />
 	<beans:bean id="validationService" class="com.erss.Services.ValidationServiceImpl" />
