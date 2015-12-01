@@ -20,6 +20,7 @@ public class Course {
 	private int ccredit;
 	private String cdescription;
 	private String tid;
+	
 	public String getId() {
 		return id;
 	}
