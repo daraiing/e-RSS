@@ -2,14 +2,15 @@ package com.erss.Services;
 
 import java.util.List;
 
+import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Faculty;
 import com.erss.Models.Message;
 
 public interface FacultyService {
 
-	public Message findOne(int  fcId);
-	public Message find(Faculty fc);
-	public Message insert(Faculty f);
-	public Message delete(Faculty f);
-	public Message update(Faculty f);
+	public Faculty findOne(int  fcId);
+	public List<Faculty> find(Faculty fc);
+	public boolean insert(Faculty f) throws MessageGenericException;
+	public boolean delete(Faculty f) throws MessageGenericException;
+	public boolean update(Faculty f) throws MessageGenericException;
 }

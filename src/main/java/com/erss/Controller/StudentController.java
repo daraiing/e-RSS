@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Message;
 import com.erss.Models.Student;
 import com.erss.Services.StudentService;
@@ -22,9 +23,9 @@ public class StudentController {
 	ValidationService validationService;
 	
 	@RequestMapping(value="insert", method= RequestMethod.POST)
-	public Message insertStudent(@ModelAttribute Student st)
+	public Object insertStudent(@ModelAttribute Student st) throws MessageGenericException
 	{	
-		Message message = studentService.insert(st);
+		boolean message = studentService.insert(st);
 		return message;
 	}
 	

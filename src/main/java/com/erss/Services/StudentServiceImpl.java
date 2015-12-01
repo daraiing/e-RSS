@@ -14,7 +14,7 @@ public class StudentServiceImpl implements StudentService {
 	StudentRepository studentRepository;
 
 	@Override
-	public Message findOne(String sid) {
+	public Student findOne(String sid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -25,42 +25,42 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Message findByAdvisor(String tid) {
+	public List<Student> findByAdvisor(String tid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Message insert(Student st) {
+	public boolean insert(Student st) {
 		if (studentRepository.findOne(st.getSid()) != null) {
 			Message msg = new Message(Message.MSG_ERROR);
 			msg.setMsgContent("This StudentId Already Exist in the Database");
-			return msg;
+			return msg != null;
 		}
 		String password = st.getPassword();
 		st.setPassword(Crypto.SHA1(password));
 		if (studentRepository.insert(st)) {
 			Message msg = new Message(Message.MSG_SUCCESS);
 			msg.setMsgContent("Student Insert Successfully");
-			return msg;
+			return msg != null;
 		} else {
 			Message msg = new Message(Message.MSG_ERROR);
 			msg.setMsgContent("Insert Failed");
-			return msg;
+			return msg != null;
 		}
 
 	}
 
 	@Override
-	public Message delete(Student st) {
+	public boolean delete(Student st) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	@Override
-	public Message update(Student st) {
+	public boolean update(Student st) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }
