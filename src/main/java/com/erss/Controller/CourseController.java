@@ -26,11 +26,10 @@ public class CourseController {
 	return msg;
 	}
 	
-	@RequestMapping(value="delete/{cid}",method = RequestMethod.GET)
-	public Object deleteCourse(@PathVariable("cid") String cid)
+	@RequestMapping(value="{cid}",method = RequestMethod.DELETE)
+	public void deleteCourse(@PathVariable("cid") String cid)
 	{
-		Boolean msg = courseService.delete(cid);
-		return new Message(msg+"");
+		courseService.delete(cid);
 	}
 	
 	@RequestMapping(method = RequestMethod.PATCH)
