@@ -46,7 +46,6 @@ public class HomeController {
 	st.setFname("Daraiing");
 	st.setLname("Titithakul");
 	Message message = studentService.insert(st);
-//	System.out.println(message);
 	return message;
 	}
 	
