@@ -23,14 +23,17 @@ public class StudentController {
 	@RequestMapping(value="insert", method= RequestMethod.POST)
 	public @ResponseBody Message insertStudent(@ModelAttribute Student st)
 	{	
-		//Message message = studentService.insert(st);
-		System.out.println(st.getFname());
-		System.out.println(st.getLname());
-		System.out.println(st.getGender());
-		System.out.println(st.getSid());
-		//return message;
-		return null;
+		Message message = studentService.insert(st);
+		return message;
 	}
+	
+	@RequestMapping(value="search", method= RequestMethod.GET)
+	public @ResponseBody Message searchStudent(@ModelAttribute Student st)
+	{	
+		Message message = studentService.find(st);
+		return message;
+	}
+	
 	
 	@RequestMapping(value="check", method= RequestMethod.POST)
 	public @ResponseBody Object validation(@ModelAttribute Student st)
