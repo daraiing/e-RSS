@@ -16,5 +16,4 @@ public interface HistoricalRepository {
 	public boolean insert(Historical h);
 	public boolean delete(Historical h);
 	public boolean update(Historical h);
-
 }
