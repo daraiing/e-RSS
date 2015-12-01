@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  */
 
-@Document(collection="")
+@Document(collection="teachers")
 public class Teacher {
 
 	@Id

@@ -11,7 +11,7 @@ import com.erss.Models.Teacher;
  */
 public interface TeacherRepository {
 	
-	public Teacher fineOne(String tid);
+	public Teacher findOne(String tid);
 	public List<Teacher> find(Teacher t);
 	public boolean insert(Teacher t);
 	public boolean delete(Teacher t);

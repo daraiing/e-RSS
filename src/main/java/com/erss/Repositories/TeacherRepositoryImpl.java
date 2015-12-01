@@ -17,7 +17,7 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	}
 
 	@Override
-	public Teacher fineOne(String tid) {
+	public Teacher findOne(String tid) {
 		BasicQuery query = new BasicQuery("{ tid:'" + tid + "'}");
 		return mongoTemplate.findOne(query, Teacher.class);
 	}
@@ -32,6 +32,7 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 			return false;
 		}
 	}
+
 	@Override
 	public boolean delete(Teacher t) {
 		try {
@@ -48,10 +49,10 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 		try {
 			BasicQuery query = new BasicQuery("{ tid:'" + t.getTid() + "'}");
 			Update update = new Update();
-			update.set("fname",t.getFname());
-			update.set("lname",t.getLname());
-			update.set("field",t.getField());
-			update.set("password",t.getPassword());
+			update.set("fname", t.getFname());
+			update.set("lname", t.getLname());
+			update.set("field", t.getField());
+			update.set("password", t.getPassword());
 			update.set("title", t.getTitle());
 			mongoTemplate.updateFirst(query, update, Teacher.class);
 			return true;
@@ -62,14 +63,28 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 
 	@Override
 	public List<Teacher> find(Teacher t) {
-		BasicQuery query = new BasicQuery("{ $or: [ { tid	:'"+ t.getTid()  	+"' },"
-				+ "	{ fname	: '" + t.getFname() + "' },"
-				+ " { lname : '" + t.getLname()	+ "' },"
-				+ " { gender: '" + t.getGender()+ "'  },"
-				+ " { title : '" + t.getTitle()	+ "' },"
-				+ " { field : '" + t.getField()	+ "' }"
-				+ "]}");
-			return mongoTemplate.find(query,Teacher.class);
+		try {
+			String bson = "{ $and: [";
+			bson = bson + (t.getTid()==null||t.getTid().isEmpty() ? "" : (bson.charAt(bson.length()-1)=='['?"":",")
+					+ " { tid : '" + t.getTid() + "'}");
+			bson = bson + (t.getFname()==null||t.getFname().isEmpty() ? "" : (bson.charAt(bson.length()-1)=='['?"":",")
+					+ " { fname : '" + t.getFname() + "'}");
+			bson = bson + (t.getLname()==null||t.getLname().isEmpty() ? "" : (bson.charAt(bson.length()-1)=='['?"":",") 
+					+ " { lname : '" + t.getLname() + "'}");
+			bson = bson + (t.getGender()==null||t.getGender().isEmpty() ? "" : (bson.charAt(bson.length()-1)=='['?"":",")
+					+ " { gender: '" + t.getGender() + "'}");
+			bson = bson + (t.getTitle()==null||t.getTitle().isEmpty() ? "" : (bson.charAt(bson.length()-1)=='['?"":",")
+					+ " { title : '" + t.getTitle() + "'}");
+			bson = bson + (t.getField()==null||t.getField().isEmpty() ? "" : (bson.charAt(bson.length()-1)=='['?"":",")
+					+ " { field : '" + t.getField() + "'}");
+			bson = bson + "]}";
+			System.err.println(bson);
+			BasicQuery query = new BasicQuery(bson);
+			return mongoTemplate.find(query, Teacher.class);
+		} catch (Exception ex) {
+			return mongoTemplate.findAll(Teacher.class);
+		}
+
 	}
 
 }
