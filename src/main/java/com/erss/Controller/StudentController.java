@@ -28,11 +28,10 @@ public class StudentController {
 		return message;
 	}
 	
-	@RequestMapping(value="search", method= RequestMethod.GET)
-	public Message searchStudent(@ModelAttribute Student st)
+	@RequestMapping(method= RequestMethod.GET)
+	public Object searchStudent(@ModelAttribute Student st)
 	{	
-		Message message = studentService.find(st);
-		return message;
+		return studentService.find(st);
 	}
 	
 	

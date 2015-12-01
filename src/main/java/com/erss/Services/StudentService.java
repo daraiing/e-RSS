@@ -7,7 +7,7 @@ import com.erss.Models.Student;
 
 public interface StudentService {
 	public Message findOne(String sid);
-	public Message find(Student st);
+	public List<Student> find(Student st);
 	public Message findByAdvisor(String tid);
 	public Message insert(Student st);
 	public Message delete(Student st);

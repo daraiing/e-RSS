@@ -16,5 +16,6 @@ public interface StudentRepository {
 	public boolean insert(Student st);
 	public boolean delete(Student st);
 	public boolean update(Student st);
-	List<Student> find(Student st, String q);
+	public List<Student> find(Student st);
+	public List<Student> findAll();
 }

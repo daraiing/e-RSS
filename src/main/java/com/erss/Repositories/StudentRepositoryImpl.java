@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Update;
 
 import com.erss.Models.Student;
+import com.erss.Models.Teacher;
 
 public class StudentRepositoryImpl implements StudentRepository {
 
@@ -23,9 +24,27 @@ public class StudentRepositoryImpl implements StudentRepository {
 	}
 
 	@Override
-	public List<Student> find(Student st,String q) {
-		BasicQuery query = new BasicQuery(q);
-		return mongoTemplate.find(query,Student.class);
+	public List<Student> find(Student st) {
+		try {
+			String bson = "{ $and:[";
+			bson = bson
+					+ (st.getSid() == null ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ sid: '" + st.getSid() + "'} ")
+					+ (st.getFname() == null ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ fname: '" + st.getFname()
+									+ "'}, ")
+					+ (st.getLname() == null ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ lname: '" + st.getLname()
+									+ "'}, ")
+					+ (st.getTitle() == null ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ title: '" + st.getTitle() + "'} ")
+					+ " ] }";
+			System.err.println(bson);
+			BasicQuery query = new BasicQuery(bson);
+			return mongoTemplate.find(query, Student.class);
+		} catch (Exception ex) {
+			return mongoTemplate.findAll(Student.class);
+		}
 	}
 
 	@Override
@@ -61,10 +80,10 @@ public class StudentRepositoryImpl implements StudentRepository {
 		try {
 			BasicQuery query = new BasicQuery("{ sid:'" + st.getSid() + "'}");
 			Update update = new Update();
-			update.set("fname",st.getFname());
-			update.set("lname",st.getLname());
-			update.set("year",st.getYear());
-			update.set("password",st.getPassword());
+			update.set("fname", st.getFname());
+			update.set("lname", st.getLname());
+			update.set("year", st.getYear());
+			update.set("password", st.getPassword());
 			update.set("tid", st.getTid());
 			update.set("fcId", st.getFcId());
 			mongoTemplate.updateFirst(query, update, Student.class);
@@ -72,6 +91,11 @@ public class StudentRepositoryImpl implements StudentRepository {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	@Override
+	public List<Student> findAll() {
+		return mongoTemplate.findAll(Student.class);
 	}
 
 }
