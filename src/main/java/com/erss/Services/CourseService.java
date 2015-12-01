@@ -7,10 +7,10 @@ import com.erss.Models.Message;
 
 public interface CourseService {
 
-	public Message findOne(String cid);
-	public Message find(Course c); 
-	public Message insert(Course c);
+	public Course findOne(String cid);
+	public List<Course> find(Course c); 
+	public boolean insert(Course c);
 	public boolean delete(String cid);
-	public Message update(Course c);
+	public boolean update(Course c);
 
 }

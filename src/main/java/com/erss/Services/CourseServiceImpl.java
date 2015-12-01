@@ -39,30 +39,30 @@ public class CourseServiceImpl implements CourseService {
 		return null;
 	}
 
-	@Override
-	public Message insert(Course c) {
-		// String credit = "" + c.getCcredit();
-		String credit = "" + c.getCcredit();
-		if (courseRepository.findOne(c.getCid()) != null) {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("This CourseId Already Exist in the Database");
-			return msg;
-		}
-		if (c.getCid() == null || c.getCname() == null) {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("This CourseId or Course Name are required field!");
-			return msg;
-		}
-		if (courseRepository.insert(c)) {
-			Message msg = new Message(Message.MSG_SUCCESS);
-			msg.setMsgContent("Course Insert Successfully");
-			return msg;
-		} else {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("Insert Failed");
-			return msg;
-		}
-	}
+//	@Override
+//	public Message insert(Course c) {
+//		// String credit = "" + c.getCcredit();
+//		String credit = "" + c.getCcredit();
+//		if (courseRepository.findOne(c.getCid()) != null) {
+//			Message msg = new Message(Message.MSG_ERROR);
+//			msg.setMsgContent("This CourseId Already Exist in the Database");
+//			return msg;
+//		}
+//		if (c.getCid() == null || c.getCname() == null) {
+//			Message msg = new Message(Message.MSG_ERROR);
+//			msg.setMsgContent("This CourseId or Course Name are required field!");
+//			return msg;
+//		}
+//		if (courseRepository.insert(c)) {
+//			Message msg = new Message(Message.MSG_SUCCESS);
+//			msg.setMsgContent("Course Insert Successfully");
+//			return msg;
+//		} else {
+//			Message msg = new Message(Message.MSG_ERROR);
+//			msg.setMsgContent("Insert Failed");
+//			return msg;
+//		}
+//	}
 
 	
 
@@ -111,6 +111,11 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public boolean delete(String cid) {
 		return courseRepository.delete(cid);
+	}
+
+	@Override
+	public boolean insert(Course c) {
+		return courseRepository.insert(c);
 	}
 
 }

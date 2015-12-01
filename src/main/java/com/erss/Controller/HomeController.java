@@ -30,14 +30,14 @@ public class HomeController {
 	/**
 	 * for test everythings
 	 */
-	@RequestMapping(value = "test", method =  RequestMethod.POST)
-	public Object testPage(@ModelAttribute Course c){
-		
-//		Message msg = new Message(Message.);
-//		msg.setMsg_content(Crypto.SHA1("Hello"));
-//		return msg;
-	Message msg = courseService.insert(c);
-	return msg;
-	}
+//	@RequestMapping(value = "test", method =  RequestMethod.POST)
+//	public Object testPage(@ModelAttribute Course c){
+//		
+////		Message msg = new Message(Message.);
+////		msg.setMsg_content(Crypto.SHA1("Hello"));
+////		return msg;
+//	Message msg = courseService.insert(c);
+//	return msg;
+//	}
 	
 }
