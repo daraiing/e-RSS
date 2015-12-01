@@ -19,8 +19,23 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Message find(Student st) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "{ $and:[ "
+				+ (st.getSid()==null ? "{ sid:{$ne:" + null + "}}," : "{ sid: '" + st.getSid() + "'}, ")
+				+ (st.getFname()==null ? "{ fname:{$ne:" + null + "}}," : "{ fname: '" + st.getFname() + "'}, ")
+				+ (st.getLname()==null ? "{ lname:{$ne:" + null + "}}," : "{ lname: '" + st.getLname() + "'}, ")
+				+ (st.getTitle()==null ? "{ title:{$ne:" + null + "}}" : "{ title: '" + st.getTitle() + "'} ")
+				+ " ] }";
+
+		System.out.println(query);
+		if (!studentRepository.find(st, query).isEmpty()) {
+			Message msg = new Message(Message.MSG_SUCCESS);
+			msg.setMsgContent(studentRepository.find(st, query));
+			return msg;
+		} else {
+			Message msg = new Message(Message.MSG_ERROR);
+			msg.setMsgContent(null);
+			return msg;
+		}
 	}
 
 	@Override
@@ -31,7 +46,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Message insert(Student st) {
-		if (studentRepository.findOne(st.getSid())!=null) {
+		if (studentRepository.findOne(st.getSid()) != null) {
 			Message msg = new Message(Message.MSG_ERROR);
 			msg.setMsgContent("This StudentId Already Exist in the Database");
 			return msg;

@@ -18,9 +18,16 @@ public class CourseController {
 	CourseService courseService;
 	
 	@RequestMapping(value = "insert", method =  RequestMethod.POST)
-	public @ResponseBody Object testPage(@ModelAttribute Course c){
+	public @ResponseBody Object insertCourse(@ModelAttribute Course c){
 	Message msg = courseService.insert(c);
 	return msg;
+	}
+	
+	@RequestMapping(value="delete",method = RequestMethod.POST)
+	public @ResponseBody Object deleteCourse(@ModelAttribute Course c)
+	{
+		Message msg = courseService.delete(c);
+		return msg;
 	}
 
 }
