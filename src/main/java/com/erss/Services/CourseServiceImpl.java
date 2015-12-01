@@ -12,9 +12,25 @@ public class CourseServiceImpl implements CourseService {
 	CourseRepository courseRepository;
 
 	@Override
-	public Message findOne(int cid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Message findOne(String cid) {
+		if(courseRepository.findOne(cid) == null)
+		{
+			Message msg = new Message(Message.MSG_ERROR);
+			msg.setMsgContent("This CourseId is not exist in the database");
+			return msg;
+		}
+		if(courseRepository.findOne(cid) != null)
+		{
+			Message msg = new Message(Message.MSG_SUCCESS);
+			msg.setMsgContent(courseRepository.findOne(cid));
+			return msg;
+		}
+		else
+		{
+			Message msg = new Message(Message.MSG_ERROR);
+			msg.setMsgContent("Cannot find");
+			return msg;
+		}
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import com.erss.Models.Message;
 
 public interface CourseService {
 
-	public Message findOne(int cid);
+	public Message findOne(String cid);
 	public Message find(Course c); 
 	public Message insert(Course c);
 	public Message delete(Course c);

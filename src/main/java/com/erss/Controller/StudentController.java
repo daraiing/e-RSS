@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.erss.Models.Message;
 import com.erss.Models.Student;
 import com.erss.Services.StudentService;
 import com.erss.Services.ValidationService;
 
-@Controller
+@RestController
 @RequestMapping("/student")
 public class StudentController {
 	@Autowired
@@ -21,14 +22,14 @@ public class StudentController {
 	ValidationService validationService;
 	
 	@RequestMapping(value="insert", method= RequestMethod.POST)
-	public @ResponseBody Message insertStudent(@ModelAttribute Student st)
+	public Message insertStudent(@ModelAttribute Student st)
 	{	
 		Message message = studentService.insert(st);
 		return message;
 	}
 	
 	@RequestMapping(value="search", method= RequestMethod.GET)
-	public @ResponseBody Message searchStudent(@ModelAttribute Student st)
+	public Message searchStudent(@ModelAttribute Student st)
 	{	
 		Message message = studentService.find(st);
 		return message;
@@ -36,7 +37,7 @@ public class StudentController {
 	
 	
 	@RequestMapping(value="check", method= RequestMethod.POST)
-	public @ResponseBody Object validation(@ModelAttribute Student st)
+	public Object validation(@ModelAttribute Student st)
 	{
 		Message message = validationService.validation(st.getSid(), st.getPassword());
 		return message;
