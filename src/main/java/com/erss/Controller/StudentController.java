@@ -21,16 +21,21 @@ public class StudentController {
 	ValidationService validationService;
 	
 	@RequestMapping(value="insert", method= RequestMethod.POST)
-	public @ResponseBody Message insertStudent(@ModelAttribute Student student)
-	{
-		Message message = studentService.insert(student);
-		return message;
+	public @ResponseBody Message insertStudent(@ModelAttribute Student st)
+	{	
+		//Message message = studentService.insert(st);
+		System.out.println(st.getFname());
+		System.out.println(st.getLname());
+		System.out.println(st.getGender());
+		System.out.println(st.getSid());
+		//return message;
+		return null;
 	}
 	
 	@RequestMapping(value="check", method= RequestMethod.POST)
-	public @ResponseBody Object validation(@ModelAttribute Student student)
+	public @ResponseBody Object validation(@ModelAttribute Student st)
 	{
-		Message message = validationService.validation(student.getSid(), student.getPassword());
+		Message message = validationService.validation(st.getSid(), st.getPassword());
 		return message;
 	}
 

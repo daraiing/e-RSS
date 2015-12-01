@@ -18,7 +18,7 @@ public class ValidationServiceImpl implements ValidationService {
 		if (st != null) {
 			if (st.getPassword().equals(Crypto.SHA1(password))) {
 				Message msg = new Message(Message.MSG_SUCCESS);
-				msg.setMsgContent("Welcome\n" + st);
+				msg.setMsgContent("Welcome\n" + st.getTitle()+" "+st.getFname()+" "+st.getLname());
 				return msg;
 			} else {
 				Message msg = new Message(Message.MSG_ERROR);
