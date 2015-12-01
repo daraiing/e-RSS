@@ -23,26 +23,23 @@ public class CourseController {
 	CourseService courseService;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void insertCourse(@RequestBody Course c) throws MessageGenericException {
-		courseService.insert(c);
+	public boolean insertCourse(@RequestBody Course c) throws MessageGenericException {
+		return courseService.insert(c);
 	}
 
 	@RequestMapping(value = "{cid}", method = RequestMethod.DELETE)
-	public void deleteCourse(@PathVariable("cid") String cid) throws MessageGenericException {
-		courseService.delete(cid);
+	public boolean deleteCourse(@PathVariable("cid") String cid) throws MessageGenericException {
+		return courseService.delete(cid);
 	}
 
-	@RequestMapping(method = RequestMethod.PATCH)
-	public Object updateCourse(@PathVariable("cid") String cid) {
-		Message msg = courseService.update((Course) courseService.findOne(cid).getMsgContent());
-		return msg;
-		// return null;
+	@RequestMapping(method = RequestMethod.PUT)
+	public boolean updateCourse(@RequestBody Course c) throws MessageGenericException {
+		return courseService.update(c);
 	}
 
-	@RequestMapping(value = "find", method = RequestMethod.GET)
-	public Object findById(@RequestParam("cid") String cid) {
-		Message msg = courseService.findOne(cid);
-		return msg;
+	@RequestMapping(value = "search/{cid}", method = RequestMethod.GET)
+	public Course findById(@PathVariable("cid") String cid) {
+		return courseService.findOne(cid);
 	}
 
 }
