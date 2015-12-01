@@ -29,17 +29,6 @@ public class CourseRepositoryImpl implements CourseRepository {
 	}
 
 	@Override
-	public boolean delete(Course c) {
-		try {
-			BasicQuery query = new BasicQuery("{ cid:'" + c.getCid() + "'}");
-			mongoTemplate.remove(query, Course.class);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
-	@Override
 	public boolean update(Course c) {
 		try {
 			BasicQuery query = new BasicQuery("{ cid:'" + c.getCid() + "'}");
@@ -70,6 +59,18 @@ public class CourseRepositoryImpl implements CourseRepository {
 	public Course findOne(String cid) {
 		BasicQuery query = new BasicQuery("{ cid:'" + cid + "'}");
 		return mongoTemplate.findOne(query, Course.class);
+	}
+
+	@Override
+	public boolean delete(String cid) {
+		try {
+			BasicQuery query = new BasicQuery("{cid:'" + cid + "'}");
+			mongoTemplate.findAndRemove(query, Course.class);
+			return true;
+			
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 }

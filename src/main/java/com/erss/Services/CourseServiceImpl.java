@@ -64,30 +64,7 @@ public class CourseServiceImpl implements CourseService {
 		}
 	}
 
-	@Override
-	public Message delete(Course c) {
-		if (c.getCid() == "") {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("Please input the correct courseid you would like to delete!");
-			return msg;
-		}
-
-		if (courseRepository.findOne(c.getCid()) == null) {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("The course that you want to delete is not exist in the database");
-			return msg;
-		}
-
-		if (courseRepository.delete(c)) {
-			Message msg = new Message(Message.MSG_SUCCESS);
-			msg.setMsgContent("The course is already deleted from database");
-			return msg;
-		} else {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("Delete Failed");
-			return msg;
-		}
-	}
+	
 
 	@Override
 	public Message update(Course c) {
@@ -129,6 +106,11 @@ public class CourseServiceImpl implements CourseService {
 			msg.setMsgContent("Update Failed");
 			return msg;
 		}
+	}
+
+	@Override
+	public boolean delete(String cid) {
+		return courseRepository.delete(cid);
 	}
 
 }

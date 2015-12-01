@@ -10,7 +10,7 @@ public interface CourseService {
 	public Message findOne(String cid);
 	public Message find(Course c); 
 	public Message insert(Course c);
-	public Message delete(Course c);
+	public boolean delete(String cid);
 	public Message update(Course c);
 
 }

@@ -94,6 +94,17 @@
 		<beans:property name="host" value="10.239.223.97" />
 		<beans:property name="port" value="27017" />
 	</beans:bean>
+	<beans:bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:list>
+				<beans:ref bean="jsonMessageConverter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	<beans:bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</beans:bean>
 	<context:component-scan base-package="com.erss">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.context.annotation.Configuration" />

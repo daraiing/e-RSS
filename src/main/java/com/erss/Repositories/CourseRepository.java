@@ -14,6 +14,6 @@ public interface CourseRepository {
 	public Course findOne(String cid);
 	public List<Course> find(Course c); 
 	public boolean insert(Course c);
-	public boolean delete(Course c);
+	public boolean delete(String cid);
 	public boolean update(Course c);
 }
