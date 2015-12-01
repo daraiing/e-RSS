@@ -23,20 +23,16 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- List of Repositories use in the system -->
-	<beans:bean id="studentRepository"
-		class="com.erss.Repositories.StudentRepositoryImpl">
+	<beans:bean id="studentRepository" class="com.erss.Repositories.StudentRepositoryImpl">
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
 	</beans:bean>
-	<beans:bean id="teacherRepository"
-		class="com.erss.Repositories.TeacherRepositoryImpl">
+	<beans:bean id="teacherRepository" class="com.erss.Repositories.TeacherRepositoryImpl">
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
 	</beans:bean>
-	<beans:bean id="courseRepository"
-		class="com.erss.Repositories.CourseRepositoryImpl">
+	<beans:bean id="courseRepository" class="com.erss.Repositories.CourseRepositoryImpl">
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
 	</beans:bean>
-	<beans:bean id="facultyRepository"
-		class="com.erss.Repositories.FacultyRepositoryImpl">
+	<beans:bean id="facultyRepository" class="com.erss.Repositories.FacultyRepositoryImpl">
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
 	</beans:bean>
 	<beans:bean id="historyRepository"
@@ -45,11 +41,11 @@
 	</beans:bean>
 
 	<!-- List of Services use in the system -->
-	
-	<beans:bean id="studentService"
-		class="com.erss.Services.StudentServiceImpl">
-<!-- 		<beans:property name="studentRepository" ref="studentRepository" /> -->
-	</beans:bean>
+
+	<beans:bean id="studentService" class="com.erss.Services.StudentServiceImpl" />
+	<beans:bean id="validationService" class="com.erss.Services.ValidationServiceImpl" />
+
+	<!-- <beans:property name="studentRepository" ref="studentRepository" /> -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
