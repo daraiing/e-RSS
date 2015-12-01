@@ -16,5 +16,4 @@ public interface FacultyRepository {
 	public boolean insert(Faculty f);
 	public boolean delete(Faculty f);
 	public boolean update(Faculty f);
-	public List<Faculty> findAll();
 }
