@@ -15,26 +15,28 @@ public class Faculty {
 	@Id
 	private String id;
 	
-	private String fcId;
-	private String fcName;
+	private String fcid;
+	private String fcname;
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getFcId() {
-		return fcId;
+	public String getFcid() {
+		return fcid;
 	}
-	public void setFcId(String fcId) {
-		this.fcId = fcId;
+	public void setFcid(String fcid) {
+		this.fcid = fcid;
 	}
-	public String getFcName() {
-		return fcName;
+	public String getFcname() {
+		return fcname;
 	}
-	public void setFcName(String fcName) {
-		this.fcName = fcName;
+	public void setFcname(String fcname) {
+		this.fcname = fcname;
 	}
+	
 
 
 	

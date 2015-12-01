@@ -31,7 +31,7 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 	@Override
 	public boolean delete(Faculty f) {
 		try {
-			BasicQuery query = new BasicQuery("{ fcId:'" + f.getFcId() + "'}");
+			BasicQuery query = new BasicQuery("{ fcId:'" + f.getFcid() + "'}");
 			mongoTemplate.remove(query, Faculty.class);
 			return true;
 		} catch (Exception e) {
@@ -42,9 +42,9 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 	@Override
 	public boolean update(Faculty f) {
 		try {
-			BasicQuery query = new BasicQuery("{ fcId:'" + f.getFcId() + "'}");
+			BasicQuery query = new BasicQuery("{ fcId:'" + f.getFcid() + "'}");
 			Update update = new Update();
-			update.set("fcName",f.getFcName());
+			update.set("fcName",f.getFcname());
 			mongoTemplate.updateFirst(query, update, Faculty.class);
 			return true;
 		} catch (Exception e) {
@@ -55,8 +55,8 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 	@Override
 	public List<Faculty> find(Faculty fc) {
 		BasicQuery query = new BasicQuery(
-						"{ $or: [ { fcId	:'" + fc.getFcId() + "' }," + 
-						"{ fcName	:'" + fc.getFcName() + "' }" + "]}");
+						"{ $or: [ { fcId	:'" + fc.getFcid() + "' }," + 
+						"{ fcName	:'" + fc.getFcname() + "' }" + "]}");
 		return mongoTemplate.find(query, Faculty.class);
 	}
 
