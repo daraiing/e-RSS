@@ -27,6 +27,7 @@
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
 	</beans:bean>
 	<beans:bean id="teacherRepository" class="com.erss.Repositories.TeacherRepositoryImpl">
+		<!-- <beans:property name="mongoTemplate" ref="mongoTemplate" /> -->
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
 	</beans:bean>
 	<beans:bean id="courseRepository" class="com.erss.Repositories.CourseRepositoryImpl">
@@ -79,6 +80,7 @@
 			ref="mappingContext" />
 		<beans:property name="typeMapper" ref="defaultMongoTypeMapper" />
 	</beans:bean>
+
 	<beans:bean id="mongoTemplate"
 		class="org.springframework.data.mongodb.core.MongoTemplate">
 		<beans:constructor-arg name="mongoDbFactory"
@@ -88,7 +90,7 @@
 	</beans:bean>
 	<!-- Factory bean that creates the Mongo instance -->
 	<beans:bean id="mongo"
-		class="org.springframework.data.mongodb.core.MongoFactoryBean">
+		class="org.springframework.data.mongodb.core.MongoClientFactoryBean">
 		<beans:property name="host" value="10.239.223.97" />
 		<beans:property name="port" value="27017" />
 	</beans:bean>

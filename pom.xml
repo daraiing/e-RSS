@@ -126,14 +126,15 @@
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
-			<version>2.11.0</version>
+			<version>3.1.1</version>
 		</dependency>
+
 
 		<!-- Spring data mongodb -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
-			<version>1.2.0.RELEASE</version>
+			<version>1.8.1.RELEASE</version>
 		</dependency>
 	</dependencies>
 	<build>
