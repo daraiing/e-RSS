@@ -22,6 +22,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<!-- List of Repositories use in the system -->
 	<beans:bean id="studentRepository"
 		class="com.erss.Repositories.StudentRepositoryImpl">
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
@@ -42,6 +43,8 @@
 		class="com.erss.Repositories.HistoricalRepositoryImpl">
 		<beans:property name="mongoTemplate" ref="mongoTemplate" />
 	</beans:bean>
+
+	<!-- List of Services use in the system -->
 	
 	<beans:bean id="studentService"
 		class="com.erss.Services.StudentServiceImpl">

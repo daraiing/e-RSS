@@ -22,11 +22,12 @@ import com.erss.Util.Crypto;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("/")
 public class HomeController {
 	@Autowired
 	StudentService studentService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home() {
 		return "home";
 	}
@@ -34,7 +35,7 @@ public class HomeController {
 	/**
 	 * for test everythings
 	 */
-	@RequestMapping(value = "/test", method =  RequestMethod.GET)
+	@RequestMapping(value = "test", method =  RequestMethod.GET)
 	public @ResponseBody Object testPage(){
 		
 //		Message msg = new Message(Message.);
