@@ -25,7 +25,8 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public Message insert(Course c) {
-
+		// String credit = "" + c.getCcredit();
+		String credit = "" + c.getCcredit();
 		if (courseRepository.findOne(c.getCid()) != null) {
 			Message msg = new Message(Message.MSG_ERROR);
 			msg.setMsgContent("This CourseId Already Exist in the Database");
@@ -50,7 +51,6 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Message delete(Course c) {
 		if (c.getCid() == "") {
-
 			Message msg = new Message(Message.MSG_ERROR);
 			msg.setMsgContent("Please input the correct courseid you would like to delete!");
 			return msg;
@@ -75,7 +75,44 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public Message update(Course c) {
-		return null;
+		// int credit = Integer.parseInt(c.getCcredit());
+		Course c1 = courseRepository.findOne(c.getCid());
+		if (c.getCid() == "" || c.getCid() == null) {
+
+			Message msg = new Message(Message.MSG_ERROR);
+			msg.setMsgContent("Please input the correct courseid you would like to update!");
+			return msg;
+		}
+
+		if (c1 == null) {
+			Message msg = new Message(Message.MSG_ERROR);
+			msg.setMsgContent("The course that you want to update is not exist in the database");
+			return msg;
+		}
+		if (c1 != null) {
+			if (c.getCname() == null || c.getCname()=="") {
+				c.setCname(c1.getCname());
+			}
+			if(c.getCdescription() == null || c.getCdescription()=="")
+			{
+				c.setCdescription(c1.getCdescription());
+			}
+			if(c.getCcredit() == -1)
+				
+			{
+				c.setCcredit(c1.getCcredit());
+			}
+		}
+		if (courseRepository.update(c)) {
+			Message msg = new Message(Message.MSG_SUCCESS);
+			msg.setMsgContent("The course is already updated");
+			return msg;
+
+		} else {
+			Message msg = new Message(Message.MSG_ERROR);
+			msg.setMsgContent("Update Failed");
+			return msg;
+		}
 	}
 
 }

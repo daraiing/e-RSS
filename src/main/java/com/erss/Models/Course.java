@@ -17,7 +17,7 @@ public class Course {
 	
 	private String cid;
 	private String cname;
-	private int ccredit;
+	private int ccredit = -1;
 	private String cdescription;
 	private String tid;
 	
