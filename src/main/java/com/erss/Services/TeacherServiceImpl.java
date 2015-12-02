@@ -49,7 +49,7 @@ public class TeacherServiceImpl implements TeacherService {
 			if(t.getFname()!=null || !t.getFname().isEmpty())tOld.setFname(t.getFname());
 			if(t.getLname()!=null || !t.getLname().isEmpty())tOld.setLname(t.getLname());
 			if(t.getField()!=null || !t.getField().isEmpty())tOld.setField(t.getField());
-			if(t.getPassword()!=null || !t.getPassword().isEmpty())tOld.setFname(Crypto.SHA1(t.getPassword()));
+			if(t.getPassword()!=null || !t.getPassword().isEmpty())tOld.setPassword(Crypto.SHA1(t.getPassword()));
 			if(t.getTitle()!=null || !t.getTitle().isEmpty())tOld.setTitle(t.getTitle());
 			return teacherRepository.update(tOld);
 		}else{

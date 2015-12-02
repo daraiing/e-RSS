@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class TeacherController {
 	TeacherService teacherService; 
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Teacher> getAllTeacher(@RequestBody Teacher t,HttpServletResponse response){
+	public List<Teacher> getAllTeacher(@ModelAttribute Teacher t,HttpServletResponse response){
 		return teacherService.find(t);
 	}
 	
@@ -46,7 +47,7 @@ public class TeacherController {
 	
 	@RequestMapping(value="/{tid}",method=RequestMethod.PUT)
 	public Message updateTeacher(
-			@PathVariable("id")String tid,
+			@PathVariable("tid")String tid,
 			@RequestBody Teacher t,
 			HttpServletResponse response){
 		t.setTid(tid);
