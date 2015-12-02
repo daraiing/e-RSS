@@ -33,34 +33,34 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public boolean insert(Student st) {
 		if (studentRepository.findOne(st.getSid()) != null) {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("This StudentId Already Exist in the Database");
-			return msg != null;
+			return false;
 		}
 		String password = st.getPassword();
 		st.setPassword(Crypto.SHA1(password));
 		if (studentRepository.insert(st)) {
-			Message msg = new Message(Message.MSG_SUCCESS);
-			msg.setMsgContent("Student Insert Successfully");
-			return msg != null;
+			return true;
 		} else {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("Insert Failed");
-			return msg != null;
+			return false;
 		}
 
 	}
 
 	@Override
 	public boolean delete(Student st) {
-		// TODO Auto-generated method stub
-		return false;
+		if (studentRepository.findOne(st.getSid()) != null) {
+			studentRepository.delete(st);
+			return true;
+		}
+		else return false;
 	}
 
 	@Override
 	public boolean update(Student st) {
-		// TODO Auto-generated method stub
-		return false;
+		if (studentRepository.findOne(st.getSid()) != null) {
+			studentRepository.update(st);
+			return true;
+		}
+		else return false;
 	}
 
 }
