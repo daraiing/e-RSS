@@ -4,27 +4,39 @@ public class MessageGenericException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 	
-	public static final String ERR_404 = "404";
-	public static final String ERR_500 = "500";
+	public static final int ERR_404 = 404;
+	public static final int ERR_500 = 500;
 	
-	private String errid;
-	private String errmsg;
-	public MessageGenericException(String errid,String errmsg) {
-		this.errid = errid;
-		this.errmsg = errmsg;
+	private String errId;
+	private String errMsg;
+	private int statusCode;
+	
+	
+	public MessageGenericException(String errId, String errMsg, int statusCode) {
+		super();
+		this.errId = errId;
+		this.errMsg = errMsg;
+		this.statusCode = statusCode;
 	}
-	public String getErrid() {
-		return errid;
+	public String getErrId() {
+		return errId;
 	}
-	public void setErrid(String errid) {
-		this.errid = errid;
+	public void setErrId(String errId) {
+		this.errId = errId;
 	}
-	public String getErrmsg() {
-		return errmsg;
+	public String getErrMsg() {
+		return errMsg;
 	}
-	public void setErrmsg(String errmsg) {
-		this.errmsg = errmsg;
+	public void setErrMsg(String errMsg) {
+		this.errMsg = errMsg;
 	}
+	public int getStatusCode() {
+		return statusCode;
+	}
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+	
 	
 	
 }
