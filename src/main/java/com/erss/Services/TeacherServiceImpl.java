@@ -61,7 +61,7 @@ public class TeacherServiceImpl implements TeacherService {
 	public Teacher findOne(String tid) {
 		Teacher t = new Teacher();
 		t.setTid(tid);
-		return teacherRepository.find(t).get(0);
+		return teacherRepository.findOne(tid);
 	}
 
 }

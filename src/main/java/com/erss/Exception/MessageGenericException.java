@@ -1,6 +1,6 @@
 package com.erss.Exception;
 
-public class MessageGenericException extends Exception{
+public class MessageGenericException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 	
