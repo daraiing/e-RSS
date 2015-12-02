@@ -23,14 +23,8 @@ public class StudentController {
 
 	// GET /student return all student
 	@RequestMapping(method = RequestMethod.GET)
-	public Object getStudent(@ModelAttribute Student st) {
+	public Object getStudents(@ModelAttribute Student st) {
 		return studentService.find(st);
-	}
-
-	// POST /student create new student
-	@RequestMapping(method = RequestMethod.POST)
-	public Object insertStudent(@RequestBody Student st) throws MessageGenericException {
-		return studentService.insert(st);
 	}
 
 	// GET /student/:sid search student by id
@@ -38,6 +32,13 @@ public class StudentController {
 	public Object searchStudent(@PathVariable String sid) {
 		return studentService.findOne(sid);
 	}
+	
+	// POST /student create new student
+	@RequestMapping(method = RequestMethod.POST)
+	public Object insertStudent(@RequestBody Student st) throws MessageGenericException {
+		return studentService.insert(st);
+	}
+
 
 	// PUT /student/:sid update student information by sid
 	@RequestMapping(value = "/{sid}", method = RequestMethod.PUT)

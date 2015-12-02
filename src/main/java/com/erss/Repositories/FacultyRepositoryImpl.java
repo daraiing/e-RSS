@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Update;
 
 import com.erss.Models.Faculty;
-import com.erss.Models.Student;
 
 public class FacultyRepositoryImpl implements FacultyRepository {
 
@@ -44,7 +43,7 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 		try {
 			BasicQuery query = new BasicQuery("{ fcid:'" + f.getFcid() + "'}");
 			Update update = new Update();
-			update.set("fcName", f.getFcname());
+			update.set("fcname", f.getFcname());
 			mongoTemplate.updateFirst(query, update, Faculty.class);
 			return true;
 		} catch (Exception e) {
@@ -71,8 +70,8 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 	}
 
 	@Override
-	public Faculty findOne(String fcId) {
-		BasicQuery query = new BasicQuery("{ fcid:'" + fcId + "'}");
+	public Faculty findOne(String fcid) {
+		BasicQuery query = new BasicQuery("{ fcid:'" + fcid + "'}");
 		return mongoTemplate.findOne(query, Faculty.class);
 	}
 
