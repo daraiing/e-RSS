@@ -1,6 +1,9 @@
 package com.erss.Controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Faculty;
+import com.erss.Models.Message;
 import com.erss.Services.FacultyService;
 
 @RestController
@@ -51,5 +55,18 @@ public class FacultyController {
 		Faculty fc = new Faculty();
 		fc.setFcid(fcid);
 		return facultyService.delete(fc);
+	}
+	
+	@ExceptionHandler(MessageGenericException.class)
+	public Message error(MessageGenericException ex,HttpServletResponse response){
+		if(ex!=null){
+			response.setStatus(ex.getStatusCode());
+			return new Message(ex.getErrId(), ex.getErrMsg());
+		}
+		else return new Message("ERR_FACULTY_SERVICE", "Unknown error my exception!");
+	}
+	@ExceptionHandler(Exception.class)
+	public Message error(Exception ex,HttpServletResponse response){
+		return new Message("ERR_FACULTY_SERVICE", "Something wrong! please check detail in server log.");
 	}
 }

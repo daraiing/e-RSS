@@ -25,7 +25,7 @@ public class TeacherServiceImpl implements TeacherService {
 	@Override
 	public boolean insert(Teacher t) throws MessageGenericException {
 		if (teacherRepository.findOne(t.getTid())!=null) {
-			throw new MessageGenericException("ERR_TE-INSERT", "already exist in the database");
+			throw new MessageGenericException("ERR_TE-INSERT", "already exist in the database",404);
 		}
 		String password = t.getPassword();
 		t.setPassword(Crypto.SHA1(password));
@@ -37,7 +37,7 @@ public class TeacherServiceImpl implements TeacherService {
 		if(teacherRepository.findOne(t.getTid())!=null){
 			return teacherRepository.delete(t);
 		}else{
-			throw new MessageGenericException("ERR_TE-DEL", "'tid:"+t.getTid()+"' not define!");
+			throw new MessageGenericException("ERR_TE-DEL", "'tid:"+t.getTid()+"' not define!",404);
 		}
 		
 	}
@@ -53,7 +53,7 @@ public class TeacherServiceImpl implements TeacherService {
 			if(t.getTitle()!=null || !t.getTitle().isEmpty())tOld.setTitle(t.getTitle());
 			return teacherRepository.update(tOld);
 		}else{
-			throw new MessageGenericException("ERR_TE-UPDATE", "'tid:"+t.getTid()+"' not define!");
+			throw new MessageGenericException("ERR_TE-UPDATE", "'tid:"+t.getTid()+"' not define!",404);
 		}
 	}
 

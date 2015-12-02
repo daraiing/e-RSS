@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Faculty;
 import com.erss.Repositories.FacultyRepository;
 
@@ -25,9 +26,8 @@ public class FacultyServiceImpl implements FacultyService {
 	@Override
 	public boolean insert(Faculty f) {
 		if (facultyRepository.findOne(f.getFcid()) != null) {
-			return false;
-		}
-		else {
+			throw new MessageGenericException("ERR_FC-INSERT", "already exist in the database", 409);
+		} else {
 			return facultyRepository.insert(f);
 		}
 	}
@@ -36,9 +36,8 @@ public class FacultyServiceImpl implements FacultyService {
 	public boolean delete(Faculty f) {
 		if (facultyRepository.findOne(f.getFcid()) != null) {
 			return facultyRepository.delete(f);
-		}
-		else {
-			return false;
+		} else {
+			throw new MessageGenericException("ERR_FC-DEL", "'fcid:" + f.getFcid() + "' not define!", 409);
 		}
 	}
 
@@ -46,9 +45,8 @@ public class FacultyServiceImpl implements FacultyService {
 	public boolean update(Faculty f) {
 		if (facultyRepository.findOne(f.getFcid()) != null) {
 			return facultyRepository.update(f);
-		}
-		else {
-			return false;
+		} else {
+			throw new MessageGenericException("ERR_FC-UPDATE", "'fcid:" + f.getFcid() + "' not define!", 409);
 		}
 	}
 

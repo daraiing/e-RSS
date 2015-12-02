@@ -35,7 +35,7 @@ public class BankTestController {
 			response.setStatus(200);
 			return t;
 		}else{
-			throw new MessageGenericException("BTS_404", "not found 'tid:"+tid+"'");
+			throw new MessageGenericException("BTS_404", "not found 'tid:"+tid+"'",404);
 		}
 	}
 	
@@ -54,7 +54,7 @@ public class BankTestController {
 	@ExceptionHandler(MessageGenericException.class)
 	public Message error(MessageGenericException ex,HttpServletResponse response){
 		response.setStatus(400);
-		if(ex!=null)return new Message(ex.getErrid(), ex.getErrmsg());
+		if(ex!=null)return new Message(ex.getErrId(), ex.getErrMsg());
 		else return new Message("ERR_BTESTSERVICE", "Unknown error my exception!");
 	}
 	@ExceptionHandler(Exception.class)

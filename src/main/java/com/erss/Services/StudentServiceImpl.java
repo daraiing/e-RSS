@@ -32,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public boolean insert(Student st) throws MessageGenericException {
 		if (studentRepository.findOne(st.getSid()) != null) {
-			throw new MessageGenericException("ERR_TE-INSERT", "already exist in the database");
+			throw new MessageGenericException("ERR_ST-INSERT", "already exist in the database",409);
 		}
 		String password = st.getPassword();
 		st.setPassword(Crypto.SHA1(password));
@@ -45,7 +45,7 @@ public class StudentServiceImpl implements StudentService {
 		if (studentRepository.findOne(st.getSid()) != null) {
 			return studentRepository.delete(st);
 		} else
-			throw new MessageGenericException("ERR_TE-DEL", "'sid:" + st.getSid() + "' not define!");
+			throw new MessageGenericException("ERR_ST-DEL", "'sid:" + st.getSid() + "' not define!",409);
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class StudentServiceImpl implements StudentService {
 			if(st.getYear()==0)st.setYear(o_st.getYear());
 			return studentRepository.update(st);
 		} else
-			throw new MessageGenericException("ERR_TE-DEL", "'sid:" + st.getSid() + "' not define!");
+			throw new MessageGenericException("ERR_ST-UPDATE", "'sid:" + st.getSid() + "' not define!",409);
 	}
 
 }

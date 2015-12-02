@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Historical;
-import com.erss.Models.Message;
 import com.erss.Repositories.HistoricalRepository;
 
 public class HistoricalServiceImpl implements HistoricalService {
