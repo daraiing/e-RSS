@@ -22,10 +22,10 @@ public class HistoricalServiceImpl implements HistoricalService {
 	public boolean insert(Historical h) throws MessageGenericException {
 		if(h.getSid() == null || h.getSid().isEmpty() || h.getCid()== null || h.getCid().isEmpty())
 		{
-			throw new MessageGenericException("ERR_HIS-INSERT", "Primary Key Lost: Either StudentId or CourseId has incorrect input", 0);
+			throw new MessageGenericException("ERR_HIS-INSERT", "Primary Key Lost: Either StudentId or CourseId has incorrect input", 400);
 		}
 		if (historicalRepository.findOne(h.getSid(), h.getCid()) != null) {
-			throw new MessageGenericException("ERR_HIS-INSERT", "Data Conflict : Already Exists in the Database", 0);
+			throw new MessageGenericException("ERR_HIS-INSERT", "Data Conflict : Already Exists in the Database", 409);
 		}
 		System.out.println(historicalRepository.findOne(h.getSid(), h.getCid()) != null);
 		return historicalRepository.insert(h);

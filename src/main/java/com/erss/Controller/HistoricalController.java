@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.erss.Exception.MessageGenericException;
@@ -39,7 +40,7 @@ public class HistoricalController {
 	public Message delHistory(@RequestParam("sid") String sid, @RequestParam("cid") String cid,
 			HttpServletResponse response) throws MessageGenericException {
 		if (historicalService.delete(sid, cid)) {
-			response.setStatus(200);
+			response.setStatus(204);
 			return new Message("SUC_INSERT", "Successfully Delete from the Database!");
 		} else {
 			response.setStatus(400);
@@ -72,17 +73,24 @@ public class HistoricalController {
 
 	@ExceptionHandler(MessageGenericException.class)
 	public Message error(MessageGenericException ex, HttpServletResponse response) {
-		response.setStatus(400);
-		if (ex != null)
+		
+		if (ex != null){
+			response.getStatus();
 			return new Message(ex.getErrId(), ex.getErrMsg());
-		else
+		}
+			
+		else{
+			response.setStatus(400);
 			return new Message("ERR_BTESTSERVICE", "Unknown error my exception!");
+		}
+			
 	}
 
 	@ExceptionHandler(Exception.class)
 	public Message error(Exception ex, HttpServletResponse response) {
-		response.setStatus(400);
+		response.setStatus(500);
 		return new Message("ERR_BTESTSERVICE", "Something wrong! please check detail in server log.");
 	}
+	
 
 }

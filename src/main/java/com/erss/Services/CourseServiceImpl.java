@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Course;
 import com.erss.Models.Message;
 import com.erss.Repositories.CourseRepository;
@@ -15,6 +16,14 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public Course findOne(String cid) {
+		if(cid==null || cid.isEmpty())
+		{
+			throw new MessageGenericException("ERR_CO-SE", "Primary Key : The CourseId has incorrect input!", 400);
+		}
+		if(courseRepository.findOne(cid) == null)
+		{
+			throw new MessageGenericException("ERR_CO-SE", "Undefined Data : Doesn't Exist in the Database", 404);
+		}
 		return courseRepository.findOne(cid);
 	}
 
@@ -23,44 +32,40 @@ public class CourseServiceImpl implements CourseService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	// @Override
-	// public Message insert(Course c) {
-	// // String credit = "" + c.getCcredit();
-	// String credit = "" + c.getCcredit();
-	// if (courseRepository.findOne(c.getCid()) != null) {
-	// Message msg = new Message(Message.MSG_ERROR);
-	// msg.setMsgContent("This CourseId Already Exist in the Database");
-	// return msg;
-	// }
-	// if (c.getCid() == null || c.getCname() == null) {
-	// Message msg = new Message(Message.MSG_ERROR);
-	// msg.setMsgContent("This CourseId or Course Name are required field!");
-	// return msg;
-	// }
-	// if (courseRepository.insert(c)) {
-	// Message msg = new Message(Message.MSG_SUCCESS);
-	// msg.setMsgContent("Course Insert Successfully");
-	// return msg;
-	// } else {
-	// Message msg = new Message(Message.MSG_ERROR);
-	// msg.setMsgContent("Insert Failed");
-	// return msg;
-	// }
-	// }
-
-	@Override
 	public boolean update(Course c) {
+		if(c.getCid() == null || c.getCid().isEmpty())
+		{
+			throw new MessageGenericException("ERR_CO-UPDATE", "Primary Key Lost: The CouurseId has incorrect input!", 400);
+		}
+		if (courseRepository.findOne(c.getCid()) == null) {
+			throw new MessageGenericException("ERR_CO-UPDATE", "Undefined Data : Doesn't Exists in the Database", 404);
+		}
 		return courseRepository.update(c);
 	}
 
 	@Override
 	public boolean delete(String cid) {
+		
+		if(cid==null || cid.isEmpty())
+		{
+			throw new MessageGenericException("ERR_CO-SE", "Primary Key : The CourseId has incorrect input!", 400);
+		}
+		if(courseRepository.findOne(cid) == null)
+		{
+			throw new MessageGenericException("ERR_CO-SE", "Undefined Data : Doesn't Exist in the Database", 404);
+		}
 		return courseRepository.delete(cid);
 	}
 
 	@Override
 	public boolean insert(Course c) {
+		if(c.getCid() == null || c.getCid().isEmpty())
+		{
+			throw new MessageGenericException("ERR_CO-UPDATE", "Primary Key Lost: The CouurseId has incorrect input!", 400);
+		}
+		if (courseRepository.findOne(c.getCid()) != null) {
+			throw new MessageGenericException("ERR_CO-UPDATE", "Data Conflict : Already Exists in the Database", 409);
+		}
 		return courseRepository.insert(c);
 	}
 
