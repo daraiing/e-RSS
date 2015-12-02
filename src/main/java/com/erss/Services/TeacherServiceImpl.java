@@ -1,7 +1,10 @@
 package com.erss.Services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Message;
 import com.erss.Models.Teacher;
 import com.erss.Repositories.TeacherRepository;
@@ -14,54 +17,32 @@ public class TeacherServiceImpl implements TeacherService {
 	
 
 	@Override
-	public Message find(Teacher t) {
-		Message msg = new Message(Message.MSG_SUCCESS);
-		msg.setMsgContent(teacherRepository.find(t));
-		return msg;
+	public List<Teacher> find(Teacher t) {
+		return teacherRepository.find(t);
 	}
 
 	@Override
-	public Message insert(Teacher t) {
+	public boolean insert(Teacher t) throws MessageGenericException {
 		if (teacherRepository.findOne(t.getTid())!=null) {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("This 'tid:"+t.getTid()+"' already exist in the database");
-			return msg;
+			throw new MessageGenericException("ERR_TE-INSERT", "already exist in the database");
 		}
 		String password = t.getPassword();
 		t.setPassword(Crypto.SHA1(password));
-		if (teacherRepository.insert(t)) {
-			Message msg = new Message(Message.MSG_SUCCESS);
-			msg.setMsgContent("Teacher 'tid:"+t.getTid()+"' insert successfully");
-			return msg;
-		} else {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("Insert failed");
-			return msg;
-		}
+		return teacherRepository.insert(t);
 	}
 
 	@Override
-	public Message delete(Teacher t) {
+	public boolean delete(Teacher t) throws MessageGenericException {
 		if(teacherRepository.findOne(t.getTid())!=null){
-			if(teacherRepository.delete(t)){
-				Message msg = new Message(Message.MSG_SUCCESS);
-				msg.setMsgContent("Teacher 'tid:"+t.getTid()+"' drop successfully");
-				return msg;
-			}else{
-				Message msg = new Message(Message.MSG_ERROR);
-				msg.setMsgContent("Teacher 'tid:"+t.getTid()+"' drop failed!");
-				return msg;
-			}
+			return teacherRepository.delete(t);
 		}else{
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("Teacher 'tid:"+t.getTid()+"' not define!");
-			return msg;
+			throw new MessageGenericException("ERR_TE-DEL", "'tid:"+t.getTid()+"' not define!");
 		}
 		
 	}
 
 	@Override
-	public Message update(Teacher t) {
+	public boolean update(Teacher t) throws MessageGenericException {
 		Teacher tOld = teacherRepository.findOne(t.getTid());
 		if(tOld!=null){
 			if(t.getFname()!=null || !t.getFname().isEmpty())tOld.setFname(t.getFname());
@@ -69,20 +50,9 @@ public class TeacherServiceImpl implements TeacherService {
 			if(t.getField()!=null || !t.getField().isEmpty())tOld.setField(t.getField());
 			if(t.getPassword()!=null || !t.getPassword().isEmpty())tOld.setFname(Crypto.SHA1(t.getPassword()));
 			if(t.getTitle()!=null || !t.getTitle().isEmpty())tOld.setTitle(t.getTitle());
-			
-			if(teacherRepository.update(tOld)){
-				Message msg = new Message(Message.MSG_ERROR);
-				msg.setMsgContent("Teacher 'tid:"+t.getTid()+"' update success!");
-				return msg;
-			}else{
-				Message msg = new Message(Message.MSG_ERROR);
-				msg.setMsgContent("Teacher 'tid:"+t.getTid()+"' update failed!");
-				return msg;
-			}
+			return teacherRepository.update(tOld);
 		}else{
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("Teacher 'tid:"+t.getTid()+"' not define!");
-			return msg;
+			throw new MessageGenericException("ERR_TE-UPDATE", "'tid:"+t.getTid()+"' not define!");
 		}
 	}
 
