@@ -3,6 +3,7 @@ package com.erss.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,8 +26,8 @@ public class StudentController {
 	@RequestMapping(value="insert", method= RequestMethod.POST)
 	public Object insertStudent(@ModelAttribute Student st) throws MessageGenericException
 	{	
-		boolean message = studentService.insert(st);
-		return message;
+		studentService.insert(st);
+		return st;
 	}
 	
 	@RequestMapping(method= RequestMethod.GET)

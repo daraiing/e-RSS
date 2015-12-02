@@ -28,16 +28,22 @@ public class StudentRepositoryImpl implements StudentRepository {
 		try {
 			String bson = "{ $and:[";
 			bson = bson
-					+ (st.getSid() == null ? ""
+					+ (st.getSid() == null || st.getSid().isEmpty() ? ""
 							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ sid: '" + st.getSid() + "'} ")
-					+ (st.getFname() == null ? ""
-							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ fname: '" + st.getFname()
-									+ "'}, ")
-					+ (st.getLname() == null ? ""
-							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ lname: '" + st.getLname()
-									+ "'}, ")
-					+ (st.getTitle() == null ? ""
+					+ (st.getFname() == null || st.getFname().isEmpty() ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ fname: '" + st.getFname() + "'} ")
+					+ (st.getLname() == null || st.getLname().isEmpty() ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ lname: '" + st.getLname() + "'} ")
+					+ (st.getTitle() == null || st.getTitle().isEmpty() ? ""
 							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ title: '" + st.getTitle() + "'} ")
+					+ (st.getYear() == 0 ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ year: " + st.getYear() + "} ")
+					+ (st.getTid() == null || st.getTid().isEmpty() ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ tid: '" + st.getTid() + "'} ")
+					+ (st.getFcid() == null || st.getFcid().isEmpty() ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ fcid: '" + st.getFcid() + "'} ")
+					+ (st.getGender() == null || st.getGender().isEmpty() ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ gender: '" + st.getGender() + "'} ")
 					+ " ] }";
 			System.err.println(bson);
 			BasicQuery query = new BasicQuery(bson);
@@ -85,17 +91,12 @@ public class StudentRepositoryImpl implements StudentRepository {
 			update.set("year", st.getYear());
 			update.set("password", st.getPassword());
 			update.set("tid", st.getTid());
-			update.set("fcId", st.getFcId());
+			update.set("fcid", st.getFcid());
 			mongoTemplate.updateFirst(query, update, Student.class);
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
-	}
-
-	@Override
-	public List<Student> findAll() {
-		return mongoTemplate.findAll(Student.class);
 	}
 
 }

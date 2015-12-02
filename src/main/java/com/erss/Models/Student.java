@@ -22,7 +22,7 @@ public class Student {
 	private String gender;
 	private int  year;
 	private String tid;
-	private String fcId;
+	private String fcid;
 	private String password;
 	
 	public String getId() {
@@ -73,11 +73,11 @@ public class Student {
 	public void setTid(String tid) {
 		this.tid = tid;
 	}
-	public String getFcId() {
-		return fcId;
+	public String getFcid() {
+		return fcid;
 	}
-	public void setFcId(String fcId) {
-		this.fcId = fcId;
+	public void setFcid(String fcid) {
+		this.fcid = fcid;
 	}
 	public String getPassword() {
 		return password;
@@ -85,9 +85,7 @@ public class Student {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 	
 	
-
+	
 }

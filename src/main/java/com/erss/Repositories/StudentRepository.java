@@ -17,5 +17,4 @@ public interface StudentRepository {
 	public boolean delete(Student st);
 	public boolean update(Student st);
 	public List<Student> find(Student st);
-	public List<Student> findAll();
 }
