@@ -33,11 +33,11 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	@Override
-	public boolean delete(Teacher t) throws MessageGenericException {
-		if(teacherRepository.findOne(t.getTid())!=null){
-			return teacherRepository.delete(t);
+	public boolean delete(String tid) throws MessageGenericException {
+		if(teacherRepository.findOne(tid)!=null){
+			return teacherRepository.delete(tid);
 		}else{
-			throw new MessageGenericException("ERR_TE-DEL", "'tid:"+t.getTid()+"' not define!",409);
+			throw new MessageGenericException("ERR_TE-DEL", "'tid:"+tid+"' not define!",409);
 		}
 		
 	}

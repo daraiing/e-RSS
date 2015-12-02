@@ -34,9 +34,9 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	}
 
 	@Override
-	public boolean delete(Teacher t) {
+	public boolean delete(String tid) {
 		try {
-			BasicQuery query = new BasicQuery("{ tid:'" + t.getTid() + "'}");
+			BasicQuery query = new BasicQuery("{ tid:'" + tid + "'}");
 			mongoTemplate.remove(query, Teacher.class);
 			return true;
 		} catch (Exception e) {
