@@ -1,15 +1,13 @@
 package com.erss.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.erss.Models.Course;
-import com.erss.Models.Message;
-import com.erss.Services.CourseService;
-import com.erss.Services.StudentService;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
  * Handles requests for the application home page.
@@ -17,27 +15,14 @@ import com.erss.Services.StudentService;
 @RestController
 @RequestMapping("/")
 public class HomeController {
-	@Autowired
-	StudentService studentService;
-	@Autowired
-	CourseService courseService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String home() {
-		return "home";
+	public Object home(RequestMappingHandlerMapping rmhm) {
+		Map<String,String> data = new HashMap<String, String>();
+		data.put("ws-name", "E-Student Registration Service System");
+		data.put("ws-version", "developing..");
+		data.put("ws-server", "tomcat7");
+		data.put("ws-startdate", Calendar.getInstance().getTime().toString());
+		return data;
 	}
-	
-	/**
-	 * for test everythings
-	 */
-//	@RequestMapping(value = "test", method =  RequestMethod.POST)
-//	public Object testPage(@ModelAttribute Course c){
-//		
-////		Message msg = new Message(Message.);
-////		msg.setMsg_content(Crypto.SHA1("Hello"));
-////		return msg;
-//	Message msg = courseService.insert(c);
-//	return msg;
-//	}
-	
 }

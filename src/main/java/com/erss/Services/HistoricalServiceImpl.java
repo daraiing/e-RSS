@@ -1,38 +1,43 @@
 package com.erss.Services;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Historical;
 import com.erss.Models.Message;
+import com.erss.Repositories.HistoricalRepository;
 
 public class HistoricalServiceImpl implements HistoricalService {
 
+	@Autowired
+	HistoricalRepository historicalRepository;
+
 	@Override
-	public Message findOne(int sid, int cid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Historical> find(Historical h) {
+		return historicalRepository.find(h);
 	}
 
 	@Override
-	public Message find(String condition) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean insert(Historical h) throws MessageGenericException {
+		return historicalRepository.insert(h);
 	}
 
 	@Override
-	public Message insert(Historical h) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(String sid, String cid) throws MessageGenericException {
+
+		return historicalRepository.delete(sid,cid);
 	}
 
 	@Override
-	public Message delete(Historical h) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean update(Historical h) throws MessageGenericException {
+		return historicalRepository.update(h);
 	}
 
 	@Override
-	public Message update(Historical h) {
-		// TODO Auto-generated method stub
-		return null;
+	public Historical findOne(String sid, String cid) {
+		return historicalRepository.findOne(sid, cid);
 	}
 
 }

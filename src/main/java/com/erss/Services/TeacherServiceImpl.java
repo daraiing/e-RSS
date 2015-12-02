@@ -15,6 +15,7 @@ public class TeacherServiceImpl implements TeacherService {
 	@Autowired
 	TeacherRepository teacherRepository; 
 	
+	
 
 	@Override
 	public List<Teacher> find(Teacher t) {
@@ -54,6 +55,13 @@ public class TeacherServiceImpl implements TeacherService {
 		}else{
 			throw new MessageGenericException("ERR_TE-UPDATE", "'tid:"+t.getTid()+"' not define!");
 		}
+	}
+
+	@Override
+	public Teacher findOne(String tid) {
+		Teacher t = new Teacher();
+		t.setTid(tid);
+		return teacherRepository.find(t).get(0);
 	}
 
 }
