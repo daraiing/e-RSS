@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.erss.Models.Message;
 import com.erss.Models.Student;
 import com.erss.Repositories.StudentRepository;
 import com.erss.Util.Crypto;
@@ -15,8 +14,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Student findOne(String sid) {
-		// TODO Auto-generated method stub
-		return null;
+		return studentRepository.findOne(sid);
 	}
 
 	@Override
@@ -37,19 +35,14 @@ public class StudentServiceImpl implements StudentService {
 		}
 		String password = st.getPassword();
 		st.setPassword(Crypto.SHA1(password));
-		if (studentRepository.insert(st)) {
-			return true;
-		} else {
-			return false;
-		}
+		return studentRepository.insert(st);
 
 	}
 
 	@Override
 	public boolean delete(Student st) {
 		if (studentRepository.findOne(st.getSid()) != null) {
-			studentRepository.delete(st);
-			return true;
+			return studentRepository.delete(st);
 		}
 		else return false;
 	}
@@ -57,8 +50,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public boolean update(Student st) {
 		if (studentRepository.findOne(st.getSid()) != null) {
-			studentRepository.update(st);
-			return true;
+			return studentRepository.update(st);
 		}
 		else return false;
 	}

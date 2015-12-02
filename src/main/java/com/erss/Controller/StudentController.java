@@ -20,53 +20,46 @@ public class StudentController {
 	StudentService studentService;
 	@Autowired
 	ValidationService validationService;
-	
-	
+
 	// GET /student return all student
-	@RequestMapping(method= RequestMethod.GET)
-	public Object getStudent(@ModelAttribute Student st)
-	{	
+	@RequestMapping(method = RequestMethod.GET)
+	public Object getStudent(@ModelAttribute Student st) {
 		return studentService.find(st);
 	}
-	
+
 	// POST /student create new student
-	@RequestMapping(method= RequestMethod.POST)
-	public Object insertStudent(@RequestBody Student st) throws MessageGenericException
-	{	
+	@RequestMapping(method = RequestMethod.POST)
+	public Object insertStudent(@RequestBody Student st) throws MessageGenericException {
 		return studentService.insert(st);
 	}
-	
+
 	// GET /student/:sid search student by id
-	@RequestMapping(value ="/{sid}", method= RequestMethod.GET)
-	public Object searchStudent(@PathVariable String sid)
-	{	
-		Student st = new Student();
-		st.setSid(sid);
-		return studentService.find(st);
+	@RequestMapping(value = "/{sid}", method = RequestMethod.GET)
+	public Object searchStudent(@PathVariable String sid) {
+		return studentService.findOne(sid);
 	}
-	
+
 	// PUT /student/:sid update student information by sid
-	@RequestMapping(value="/{sid}",method= RequestMethod.PUT)
-	public Object updateStudent(@PathVariable String sid,@RequestBody Student st) throws MessageGenericException
-	{	
+	@RequestMapping(value = "/{sid}", method = RequestMethod.PUT)
+	public Object updateStudent(@PathVariable String sid, @RequestBody Student st) throws MessageGenericException {
 		st.setSid(sid);
 		return studentService.update(st);
 	}
-	
+
 	// DELETE /student/:sid delete student by sid
-	@RequestMapping(value="/{sid}",method= RequestMethod.DELETE)
-	public Object deleteStudent(@PathVariable String sid) throws MessageGenericException
-	{	
+	@RequestMapping(value = "/{sid}", method = RequestMethod.DELETE)
+	public Object deleteStudent(@PathVariable String sid) throws MessageGenericException {
 		Student st = new Student();
 		st.setSid(sid);
 		return studentService.delete(st);
 	}
-	
-//	@RequestMapping(value="check", method= RequestMethod.POST)
-//	public Object validation(@ModelAttribute Student st)
-//	{
-//		Message message = validationService.validation(st.getSid(), st.getPassword());
-//		return message;
-//	}
+
+	// @RequestMapping(value="check", method= RequestMethod.POST)
+	// public Object validation(@ModelAttribute Student st)
+	// {
+	// Message message = validationService.validation(st.getSid(),
+	// st.getPassword());
+	// return message;
+	// }
 
 }

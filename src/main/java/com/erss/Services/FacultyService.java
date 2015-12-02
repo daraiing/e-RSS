@@ -8,7 +8,7 @@ import com.erss.Models.Message;
 
 public interface FacultyService {
 
-	public Faculty findOne(int  fcId);
+	public Faculty findOne(String fcid);
 	public List<Faculty> find(Faculty fc);
 	public boolean insert(Faculty f) throws MessageGenericException;
 	public boolean delete(Faculty f) throws MessageGenericException;

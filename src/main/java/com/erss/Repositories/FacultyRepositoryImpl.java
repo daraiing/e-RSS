@@ -31,7 +31,7 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 	@Override
 	public boolean delete(Faculty f) {
 		try {
-			BasicQuery query = new BasicQuery("{ fcId:'" + f.getFcid() + "'}");
+			BasicQuery query = new BasicQuery("{ fcid:'" + f.getFcid() + "'}");
 			mongoTemplate.remove(query, Faculty.class);
 			return true;
 		} catch (Exception e) {
@@ -42,9 +42,9 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 	@Override
 	public boolean update(Faculty f) {
 		try {
-			BasicQuery query = new BasicQuery("{ fcId:'" + f.getFcid() + "'}");
+			BasicQuery query = new BasicQuery("{ fcid:'" + f.getFcid() + "'}");
 			Update update = new Update();
-			update.set("fcName",f.getFcname());
+			update.set("fcName", f.getFcname());
 			mongoTemplate.updateFirst(query, update, Faculty.class);
 			return true;
 		} catch (Exception e) {
@@ -54,15 +54,25 @@ public class FacultyRepositoryImpl implements FacultyRepository {
 
 	@Override
 	public List<Faculty> find(Faculty fc) {
-		BasicQuery query = new BasicQuery(
-						"{ $or: [ { fcId	:'" + fc.getFcid() + "' }," + 
-						"{ fcName	:'" + fc.getFcname() + "' }" + "]}");
-		return mongoTemplate.find(query, Faculty.class);
+		try {
+			String bson = "{ $and:[";
+			bson = bson
+					+ (fc.getFcname() == null || fc.getFcname().isEmpty() ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ fcname: '" + fc.getFcname() + "'} ")
+					+ (fc.getFcid() == null || fc.getFcid().isEmpty() ? ""
+							: (bson.charAt(bson.length() - 1) == '[' ? "" : ",") + "{ fcid: '" + fc.getFcid() + "'} ")
+					+ " ] }";
+			System.err.println(bson);
+			BasicQuery query = new BasicQuery(bson);
+			return mongoTemplate.find(query, Faculty.class);
+		} catch (Exception ex) {
+			return mongoTemplate.findAll(Faculty.class);
+		}
 	}
 
 	@Override
 	public Faculty findOne(String fcId) {
-		BasicQuery query = new BasicQuery("{ fcId:'" + fcId + "'}");
+		BasicQuery query = new BasicQuery("{ fcid:'" + fcId + "'}");
 		return mongoTemplate.findOne(query, Faculty.class);
 	}
 

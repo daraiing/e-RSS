@@ -11,7 +11,7 @@ import com.erss.Models.Faculty;
  */
 public interface FacultyRepository {
 
-	public Faculty findOne(String  fcId);
+	public Faculty findOne(String  fcid);
 	public List<Faculty> find(Faculty fc);
 	public boolean insert(Faculty f);
 	public boolean delete(Faculty f);

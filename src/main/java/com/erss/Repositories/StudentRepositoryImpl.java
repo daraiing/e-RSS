@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Update;
 
 import com.erss.Models.Student;
-import com.erss.Models.Teacher;
 
 public class StudentRepositoryImpl implements StudentRepository {
 
