@@ -2,33 +2,45 @@ package com.erss.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.erss.Models.Message;
+import com.erss.Exception.MessageGenericException;
 import com.erss.Models.Student;
+import com.erss.Models.Teacher;
 import com.erss.Repositories.StudentRepository;
+import com.erss.Repositories.TeacherRepository;
 import com.erss.Util.Crypto;
 
 public class ValidationServiceImpl implements ValidationService {
 
 	@Autowired
 	StudentRepository studentRepository;
+	
+	TeacherRepository teacherRepository;
 
 	@Override
-	public Message validation(String sid, String password) {
+	public Student validationStudent(String sid, String password) throws MessageGenericException {
 		Student st = studentRepository.findOne(sid);
 		if (st != null) {
 			if (st.getPassword().equals(Crypto.SHA1(password))) {
-				Message msg = new Message(Message.MSG_SUCCESS);
-				msg.setMsgContent("Welcome\n" + st.getTitle()+" "+st.getFname()+" "+st.getLname());
-				return msg;
+				return st;
 			} else {
-				Message msg = new Message(Message.MSG_ERROR);
-				msg.setMsgContent("Password is wrong");
-				return msg;
+				throw new MessageGenericException("VID_ERROR", "Passwrong is wrong!", 401);
 			}
 		} else {
-			Message msg = new Message(Message.MSG_ERROR);
-			msg.setMsgContent("Student ID is invalid.");
-			return msg;
+			throw new MessageGenericException("VID_ERROR", "Student ID is invalid.", 409);
+		}
+	}
+
+	@Override
+	public Teacher validationTeacher(String tid, String password) throws MessageGenericException {
+		Teacher st = teacherRepository.findOne(tid);
+		if (st != null) {
+			if (st.getPassword().equals(Crypto.SHA1(password))) {
+				return st;
+			} else {
+				throw new MessageGenericException("VID_ERROR", "Passwrong is wrong!", 401);
+			}
+		} else {
+			throw new MessageGenericException("VID_ERROR", "Teacher ID is invalid.", 409);
 		}
 	}
 
