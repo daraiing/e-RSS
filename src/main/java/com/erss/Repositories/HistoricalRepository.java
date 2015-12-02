@@ -12,8 +12,8 @@ import com.erss.Models.Historical;
 public interface HistoricalRepository {
 	
 	public Historical findOne(String sid,String cid);
-	public List<Historical> find(String condition);
+	public List<Historical> find(Historical h);
 	public boolean insert(Historical h);
-	public boolean delete(Historical h);
+	public boolean delete(String cid,String sid);
 	public boolean update(Historical h);
 }
